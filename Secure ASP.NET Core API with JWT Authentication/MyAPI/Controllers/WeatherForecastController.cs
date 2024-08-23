@@ -1,5 +1,8 @@
 namespace MyAPI.Controllers;
+
 using Microsoft.AspNetCore.Mvc;
+
+using MyAPI.Models.WeatherForecast;
 
 [ApiController]
 [Route("[controller]")]
