@@ -11,6 +11,7 @@ using MyAPI.Services.JWTTokenGenerator;
 public class AuthController(UserManager<IdentityUser> userManager, IJWTTokenGenerator tokenGenerator) : ControllerBase
 {
     [HttpPost]
+    [Route("register")]
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
         var user = new IdentityUser
@@ -30,6 +31,7 @@ public class AuthController(UserManager<IdentityUser> userManager, IJWTTokenGene
     }
 
     [HttpPost]
+    [Route("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
         var user = await userManager.FindByNameAsync(model.Username);

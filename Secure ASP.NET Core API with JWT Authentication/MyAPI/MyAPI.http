@@ -1,6 +1,26 @@
-@MyAPI_HostAddress = http://localhost:5177
+@MyAPI_HostAddress = https://localhost:7112
 
 GET {{MyAPI_HostAddress}}/weatherforecast/
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0IiwianRpIjoiNTZjNDRlNTMtYjc3MC00ZGZjLWJlMmMtYjA3OTcxYTc0NDhhIiwiZXhwIjoxNzI0NDAzOTY0LCJpc3MiOiJKV1REZW1vIiwiYXVkIjoiSldURGVtbyJ9.B-Iq5P2IBjlrRTvqxN5yBttZz9V4lUezsLS_0n7lg74
+
+###
+
+POST {{MyAPI_HostAddress}}/api/auth/register
+Content-Type: application/json
+{
+  "Username": "Test",
+  "Email": "Test@test.com",
+  "Password": "TestJWT1!!"
+}
+
+###
+
+POST {{MyAPI_HostAddress}}/api/auth/login
+Content-Type: application/json
+{
+  "Username": "Test",
+  "Password": "TestJWT1!!"
+}
 
 ###
