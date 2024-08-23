@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 using MyAPI.Data;
+using MyAPI.Services.JWTTokenGenerator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,8 @@ builder.Services
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]!))
         };
     });
+
+builder.Services.AddScoped<IJWTTokenGenerator, JWTTokenGenerator>();
 
 var app = builder.Build();
 
