@@ -6,7 +6,7 @@ using CarRentalSystem.Domain.Exceptions;
 using static ModelConstants.CarAd;
 using static ModelConstants.Common;
 
-public class CarAd : IAggregateRoot
+public class CarAd : Entity<int>, IAggregateRoot
 {
     public CarAd(string model, Manufacturer manufacturer, Category category, string imageUrl, decimal pricePerDay, Options options, bool isAvailable)
     {
