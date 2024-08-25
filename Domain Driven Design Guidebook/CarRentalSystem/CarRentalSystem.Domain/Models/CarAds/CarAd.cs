@@ -8,7 +8,14 @@ using static ModelConstants.Common;
 
 public class CarAd : Entity<int>, IAggregateRoot
 {
-    public CarAd(string model, Manufacturer manufacturer, Category category, string imageUrl, decimal pricePerDay, Options options, bool isAvailable)
+    public CarAd(
+        string model,
+        Manufacturer manufacturer,
+        Category category,
+        string imageUrl,
+        decimal pricePerDay,
+        Options options,
+        bool isAvailable)
     {
         this.Validate(model, imageUrl, pricePerDay);
 
