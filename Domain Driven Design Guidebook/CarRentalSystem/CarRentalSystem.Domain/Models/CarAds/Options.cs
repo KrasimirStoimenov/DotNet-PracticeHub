@@ -9,6 +9,8 @@ public class Options : ValueObject
 {
     internal Options(bool hasClimateControl, int numberOfSeats, TransmissionType transmissionType)
     {
+        this.Validate(numberOfSeats);
+
         this.HasClimateControl = hasClimateControl;
         this.NumberOfSeats = numberOfSeats;
         this.TransmissionType = transmissionType;

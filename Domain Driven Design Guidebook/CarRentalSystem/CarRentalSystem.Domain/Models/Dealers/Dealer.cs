@@ -27,6 +27,9 @@ public class Dealer : Entity<int>, IAggregateRoot
     public IReadOnlyCollection<CarAd> CarAds
         => this.carAds.ToList().AsReadOnly();
 
+    public void AddCarAd(CarAd carAd)
+        => this.carAds.Add(carAd);
+
     private void Validate(string name)
         => Guard.ForStringLength<InvalidDealerException>(
             name,
