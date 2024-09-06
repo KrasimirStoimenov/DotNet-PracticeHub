@@ -19,7 +19,7 @@ public class PhoneNumber : ValueObject
         this.Number = number;
     }
 
-    public string Number { get; }
+    public string Number { get; init; }
 
     public static implicit operator string(PhoneNumber number) => number.Number;
 

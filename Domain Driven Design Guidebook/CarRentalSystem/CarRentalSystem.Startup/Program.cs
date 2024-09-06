@@ -1,8 +1,12 @@
+using CarRentalSystem.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services
+    .AddInfrastructure(builder.Configuration)
+    .AddControllers();
 
 var app = builder.Build();
 

@@ -16,9 +16,9 @@ public class Category : Entity<int>
         this.Description = description;
     }
 
-    public string Name { get; }
+    public string Name { get; init; }
 
-    public string Description { get; }
+    public string Description { get; init; }
 
     private void Validate(string name, string description)
     {

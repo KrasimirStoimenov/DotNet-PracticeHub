@@ -20,9 +20,17 @@ public class Dealer : Entity<int>, IAggregateRoot
         this.carAds = [];
     }
 
-    public string Name { get; }
+    private Dealer(string name)
+    {
+        this.Name = name;
+        this.PhoneNumber = default!;
 
-    public PhoneNumber PhoneNumber { get; }
+        this.carAds = [];
+    }
+
+    public string Name { get; init; }
+
+    public PhoneNumber PhoneNumber { get; init; }
 
     public IReadOnlyCollection<CarAd> CarAds
         => this.carAds.ToList().AsReadOnly();

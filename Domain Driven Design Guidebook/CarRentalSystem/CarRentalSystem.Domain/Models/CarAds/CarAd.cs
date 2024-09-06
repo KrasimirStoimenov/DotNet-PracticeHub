@@ -28,17 +28,37 @@ public class CarAd : Entity<int>, IAggregateRoot
         this.IsAvailable = isAvailable;
     }
 
-    public string Model { get; }
+    /*  Entity Framework Core wants constructors that bind non-navigational properties,
+        but according to the Domain-Driven Design principles, entities cannot be created with an invalid state.
+        The solution is to add additional private constructors to our domain model classes for Entity Framework Core to use.*/
 
-    public Manufacturer Manufacturer { get; }
+    private CarAd(
+        string model,
+        string imageUrl,
+        decimal pricePerDay,
+        bool isAvailable)
+    {
+        this.Model = model;
+        this.ImageUrl = imageUrl;
+        this.PricePerDay = pricePerDay;
+        this.IsAvailable = isAvailable;
 
-    public Category Category { get; }
+        this.Manufacturer = default!;
+        this.Category = default!;
+        this.Options = default!;
+    }
 
-    public string ImageUrl { get; }
+    public string Model { get; init; }
 
-    public decimal PricePerDay { get; }
+    public Manufacturer Manufacturer { get; init; }
 
-    public Options Options { get; }
+    public Category Category { get; init; }
+
+    public string ImageUrl { get; init; }
+
+    public decimal PricePerDay { get; init; }
+
+    public Options Options { get; init; }
 
     public bool IsAvailable { get; private set; }
 

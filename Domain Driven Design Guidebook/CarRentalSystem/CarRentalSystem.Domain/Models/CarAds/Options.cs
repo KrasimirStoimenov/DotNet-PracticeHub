@@ -16,11 +16,19 @@ public class Options : ValueObject
         this.TransmissionType = transmissionType;
     }
 
-    public bool HasClimateControl { get; }
+    private Options(bool hasClimateControl, int numberOfSeats)
+    {
+        this.HasClimateControl = hasClimateControl;
+        this.NumberOfSeats = numberOfSeats;
 
-    public int NumberOfSeats { get; }
+        this.TransmissionType = default!;
+    }
 
-    public TransmissionType TransmissionType { get; }
+    public bool HasClimateControl { get; init; }
+
+    public int NumberOfSeats { get; init; }
+
+    public TransmissionType TransmissionType { get; init; }
 
     private void Validate(int numberOfSeats)
         => Guard.AgainstOutOfRange<InvalidOptionsException>(

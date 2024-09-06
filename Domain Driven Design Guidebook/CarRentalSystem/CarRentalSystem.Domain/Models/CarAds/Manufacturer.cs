@@ -14,7 +14,7 @@ public class Manufacturer : Entity<int>
         this.Name = name;
     }
 
-    public string Name { get; }
+    public string Name { get; init; }
 
     private void Validate(string name)
         => Guard.ForStringLength<InvalidCarAdException>(
