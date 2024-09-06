@@ -1,21 +1,27 @@
+using CarRentalSystem.Application;
 using CarRentalSystem.Infrastructure;
+using CarRentalSystem.Startup;
+using CarRentalSystem.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services
+    .AddApplication(builder.Configuration)
     .AddInfrastructure(builder.Configuration)
-    .AddControllers();
+    .AddWebComponents();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app.UseHttpsRedirection()
+    .UseRouting()
+    .UseAuthentication()
+    .UseAuthorization()
+    .UseEndpoints(endpoints
+        => endpoints.MapControllers())
+    .Initialize();
 
 app.Run();
