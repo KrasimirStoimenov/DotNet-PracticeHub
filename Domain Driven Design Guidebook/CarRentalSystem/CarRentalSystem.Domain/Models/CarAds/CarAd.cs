@@ -8,7 +8,7 @@ using static ModelConstants.Common;
 
 public class CarAd : Entity<int>, IAggregateRoot
 {
-    public CarAd(
+    internal CarAd(
         string model,
         Manufacturer manufacturer,
         Category category,

@@ -10,7 +10,7 @@ public class Dealer : Entity<int>, IAggregateRoot
 {
     private readonly HashSet<CarAd> carAds;
 
-    public Dealer(string name, string phoneNumber)
+    internal Dealer(string name, string phoneNumber)
     {
         this.Validate(name);
 
