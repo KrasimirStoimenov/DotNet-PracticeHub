@@ -2,43 +2,24 @@
 {
     using System.Threading.Tasks;
 
-    using Application.Contracts;
-    using Application.Features.Identity;
+    using CarRentalSystem.Application.Features.Identity.Commands.LoginUser;
+    using CarRentalSystem.Application.Features.Identity.Commands.LoginUser.Models;
+    using CarRentalSystem.Application.Features.Identity.Commands.RegisterUser;
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [ApiController]
-    [Route("[controller]")]
-    public class IdentityController(IIdentity identity) : ControllerBase
+    public class IdentityController : ApiController
     {
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<ActionResult> Register(UserInputModel model)
-        {
-            var result = await identity.Register(model);
-
-            if (!result.Succeeded)
-            {
-                return BadRequest(result.Errors);
-            }
-
-            return Ok();
-        }
+        public async Task<ActionResult> Register(RegisterUserCommand registerCommand)
+            => await this.Send(registerCommand);
 
         [HttpPost]
         [Route(nameof(Login))]
-        public async Task<ActionResult<LoginOutputModel>> Login(UserInputModel model)
-        {
-            var result = await identity.Login(model);
-
-            if (!result.Succeeded)
-            {
-                return BadRequest(result.Errors);
-            }
-
-            return result.Data;
-        }
+        public async Task<ActionResult<LoginOutputModel>> Login(LoginUserCommand loginCommand)
+            => await this.Send(loginCommand);
 
         [HttpGet]
         [Authorize]

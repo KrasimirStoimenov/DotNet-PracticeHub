@@ -1,5 +1,7 @@
 ﻿namespace CarRentalSystem.Application;
 
+using System.Reflection;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,5 +11,6 @@ public static class ApplicationConfiguration
         => services
             .Configure<ApplicationSettings>(
                 configuration.GetSection(nameof(ApplicationSettings)),
-                options => options.BindNonPublicProperties = true);
+                options => options.BindNonPublicProperties = true)
+            .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 }

@@ -1,6 +1,5 @@
 ﻿namespace CarRentalSystem.Infrastructure.Identity;
 
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -10,6 +9,8 @@ using System.Threading.Tasks;
 using Application;
 using Application.Contracts;
 using Application.Features.Identity;
+
+using CarRentalSystem.Application.Features.Identity.Commands.LoginUser.Models;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;

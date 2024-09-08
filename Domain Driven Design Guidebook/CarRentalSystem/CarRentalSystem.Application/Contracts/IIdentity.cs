@@ -1,6 +1,8 @@
-﻿namespace CarRentalSystem.Application.Contracts;
+﻿using CarRentalSystem.Application.Features.Identity;
 
-using CarRentalSystem.Application.Features.Identity;
+namespace CarRentalSystem.Application.Contracts;
+
+using CarRentalSystem.Application.Features.Identity.Commands.LoginUser.Models;
 
 public interface IIdentity
 {
